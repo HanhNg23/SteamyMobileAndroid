@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.dagger.hilt.android")
+    id("com.apollographql.apollo") version "4.0.0"
 }
 
 android {
@@ -32,16 +34,41 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    apollo {
+        service("service") {
+            srcDir("src/main/graphql/src/main/graphql")
+            packageName.set("com.stemy.mobileandroid")
+        }
+    }
+
 }
 
-dependencies {
 
+dependencies {
     implementation(libs.appcompat)
-    implementation(libs.material)
     implementation(libs.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.legacy.support.v4)
+    implementation(libs.recyclerview)
+    implementation(libs.annotation)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.material)
+    implementation(libs.com.google.dagger.hilt.android.gradle.plugin)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.lombok)
+    implementation(libs.client)
+    implementation(libs.rx3)
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.compiler)
+    implementation(libs.apollo.runtime)
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 }

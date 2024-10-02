@@ -20,9 +20,14 @@
         android:name="com.stemy.mobileandroid.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ItemListFragment"
+        android:name="com.stemy.mobileandroid.ItemFragment"
+        android:label="Item List Fragment"
+        tools:layout="@layout/fragment_item_list">
     </fragment>
 </navigation>

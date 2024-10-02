@@ -18,6 +18,9 @@ import com.stemy.mobileandroid.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
