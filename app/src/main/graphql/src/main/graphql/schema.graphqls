@@ -1,0 +1,226 @@
+"""
+Indicates exactly one field must be supplied and this field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
+
+type AccessTokenResponse {
+  access_token: String!
+}
+
+type Cart {
+  createdAt: DateTimeISO!
+  hasLab: Boolean!
+  id: ID!
+  product: Product!
+  quantity: Int!
+  updatedAt: DateTimeISO
+  user: User!
+}
+
+enum CategoryType {
+  AGE
+  PRODUCT
+  TOPIC
+}
+
+input CheckoutOrderInput {
+  vnp_Amount: String!
+  vnp_BankCode: String!
+  vnp_BankTranNo: String!
+  vnp_CardType: String!
+  vnp_OrderInfo: String!
+  vnp_PayDate: String!
+  vnp_ResponseCode: String!
+  vnp_TmnCode: String!
+  vnp_TransactionNo: String!
+  vnp_TransactionStatus: String!
+  vnp_TxnRef: String!
+  vnp_SecureHash: String!
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.This scalar is serialized to a string in ISO 8601 format and parsed from a string in ISO 8601 format.
+"""
+scalar DateTimeISO
+
+type Feedback {
+  comment: String!
+  createdAt: DateTimeISO!
+  id: ID!
+  orderItem: OrderItem!
+  product: Product!
+  rating: Int!
+  updatedAt: DateTimeISO
+  user: User!
+}
+
+"""File upload scalar type"""
+scalar File
+
+type Mutation {
+  addToCart(hasLab: Boolean!, productId: Float!, quantity: Float!): Cart!
+  checkoutOrder(input: CheckoutOrderInput!): Boolean!
+  createOrder(address: String!, cartIds: Int!, paymentProvider: PaymentProvider!, phone: String!): String!
+  createProduct(images: [File!]!, input: ProductInput!, lab: File!): Product!
+  createTicket(categoryId: Float!, comment: String!, orderId: Float!, title: String!): Ticket!
+  deleteCarts(cartId: [Int!]!): String!
+  deleteProduct(id: Float!): Product!
+  getTokenResetPassword(OTPCode: String!, email: String!): String!
+  login(email: String!, password: String!): AccessTokenResponse!
+  loginWithGoogle(code: String!): AccessTokenResponse!
+  register(email: String!, fullName: String!, password: String!, phone: String!): AccessTokenResponse!
+  repayOrder(orderId: Float!): String!
+  replyTicket: Ticket!
+  resetPassword(password: String!, token: String!): String!
+  sendResetPasswordOTP(email: String!): String!
+  updateCart(cartId: Float!, quantity: Float!): Cart!
+}
+
+type Order {
+  createdAt: DateTimeISO!
+  id: ID!
+  updatedAt: DateTimeISO
+}
+
+type OrderItem {
+  createdAt: DateTimeISO!
+  hasLab: Boolean!
+  id: ID!
+  labPrice: Int!
+  order: Order!
+  product: Product!
+  productPrice: Int!
+  quantity: Int!
+  updatedAt: DateTimeISO
+}
+
+enum PaymentProvider {
+  VNPAY
+}
+
+type Product {
+  categories: [ProductCategory!]!
+  createdAt: DateTimeISO!
+  description: String!
+  feedbacks: [Feedback!]!
+  id: ID!
+  images: [ProductImage!]!
+  lab: ProductLab
+  name: String!
+  price: Int!
+  rating: Int!
+  sold: Int!
+  updatedAt: DateTimeISO
+}
+
+type ProductCategory {
+  createdAt: DateTimeISO!
+  id: ID!
+  name: String!
+  products: [Product!]!
+  title: String!
+  type: [CategoryType!]!
+  updatedAt: DateTimeISO
+}
+
+type ProductImage {
+  createdAt: DateTimeISO!
+  id: ID!
+  updatedAt: DateTimeISO
+  url: String!
+}
+
+input ProductInput {
+  name: String!
+  description: String!
+  price: Int!
+  categoryIds: [Int!]!
+  labPrice: Int!
+}
+
+type ProductLab {
+  createdAt: DateTimeISO!
+  id: ID!
+  price: Int!
+  updatedAt: DateTimeISO
+  url: String!
+}
+
+type ProductsWithPaginationResponse {
+  items: [Product!]!
+  pageInfo: e!
+}
+
+type Query {
+  carts: [Cart!]!
+  countCart: Float!
+  me: User!
+  product(id: Float!): Product!
+  productCategories: [ProductCategory!]!
+  products(currentItem: Int! = 9, currentPage: Int! = 1, order: SortOrder! = ASC, sort: String! = "id"): ProductsWithPaginationResponse!
+  user(id: Int!): User
+  users: [User!]!
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+  MANAGER
+  STAFF
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+type Ticket {
+  category: TicketCategory!
+  closedAt: DateTimeISO
+  createdAt: DateTimeISO!
+  id: ID!
+  order: Order!
+  replier: User
+  replierComment: String
+  sender: User!
+  senderComment: String!
+  status: TicketStatus!
+  title: String!
+  updatedAt: DateTimeISO
+}
+
+type TicketCategory {
+  createdAt: DateTimeISO!
+  id: ID!
+  name: String!
+  tickets: [Ticket!]!
+  updatedAt: DateTimeISO
+}
+
+enum TicketStatus {
+  CLOSE
+  OPEN
+}
+
+type User {
+  createdAt: DateTimeISO!
+  email: String!
+  fullName: String!
+  id: ID!
+  phone: String
+  role: Role!
+  status: UserStatus!
+  updatedAt: DateTimeISO
+}
+
+enum UserStatus {
+  ACTIVE
+  BAN
+}
+
+type e {
+  currentItem: Int!
+  currentPage: Int!
+  totalItem: Int!
+  totalPage: Int!
+}
