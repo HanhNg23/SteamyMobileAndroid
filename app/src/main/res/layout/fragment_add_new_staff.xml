@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_background"
+    tools:context=".ui.employee.addnewstaff.AddNewStaffFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_theme_background">
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="407dp"
+            android:layout_height="189dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profile_frame"
+                style="?attr/floatingActionButtonSmallStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0">
+
+                <!-- Avatar Image -->
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="128dp"
+                    android:layout_height="123dp"
+                    android:contentDescription="Profile Image"
+                    android:elevation="4dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5"
+                    app:shapeAppearanceOverlay="@style/CircularImage" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/edit_image_button"
+                    style="?attr/floatingActionButtonSmallStyle"
+                    android:layout_width="41dp"
+                    android:layout_height="39dp"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="0dp"
+                    android:layout_marginEnd="-20dp"
+                    android:layout_marginBottom="-20dp"
+                    android:contentDescription="Edit Profile Image"
+                    android:elevation="6dp"
+                    android:src="@drawable/ic_edit"
+                    app:backgroundTint="#C8EBDD"
+                    app:borderWidth="1dp"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_image"
+                    app:tint="@color/md_theme_onBackground_highContrast" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+            <!-- Name Input Field -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputName"
+                style="?attr/textAppearanceSubtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:hint="@string/prompt_fullname"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_person">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Email Input Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textEmail"
+                style="?attr/textAppearanceSubtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_email"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_mail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Phone Input Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textPhone"
+                style="?attr/textAppearanceSubtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Address Input Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textAddress"
+                style="?attr/textAppearanceSubtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/promt_address"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_house_address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password Input Field -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textPassword"
+                style="?attr/textAppearanceSubtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="password"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_key">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/labelRole"
+                style="@android:style/Widget.Holo.TextView.SpinnerItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="Role"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/roleGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/radioAdmin"
+                android:focusable="auto"
+                android:labelFor="@id/labelRole"
+                android:orientation="horizontal"
+                app:errorEnabled="true">
+
+                <RadioButton
+                    android:id="@+id/radioAdmin"
+                    style="@style/Widget.Material3.CompoundButton.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:backgroundTint="@color/md_theme_background_mediumContrast"
+                    android:checked="true"
+                    android:padding="10dp"
+                    android:text="@string/admin_role"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:useMaterialThemeColors="true" />
+
+                <RadioButton
+                    android:id="@+id/radioManager"
+                    style="@style/Widget.Material3.CompoundButton.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="@string/manager_role"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioStaff"
+                    style="@style/Widget.Material3.CompoundButton.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="@string/staff_role"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/labelActive"
+                style="@android:style/Widget.Holo.TextView.SpinnerItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Status"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/statusGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/radioAdmin"
+                android:focusable="auto"
+                android:labelFor="@id/labelRole"
+                android:orientation="horizontal"
+                app:errorEnabled="true">
+
+                <RadioButton
+                    android:id="@+id/statusActive"
+                    style="@style/Widget.Material3.CompoundButton.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:backgroundTint="@color/md_theme_background_mediumContrast"
+                    android:checked="true"
+                    android:padding="10dp"
+                    android:text="Active"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:useMaterialThemeColors="true" />
+
+                <RadioButton
+                    android:id="@+id/statusBan"
+                    style="@style/Widget.Material3.CompoundButton.RadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="Ban"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/buttonSaveRegister"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="96dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:text="Save" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#6B6F6B"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/loadingRegister"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

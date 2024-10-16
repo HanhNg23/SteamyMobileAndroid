@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.employeeslist.EmployeeViewInDetailsFragment">
+
+    <!-- Scrollable content inside NestedScrollView -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttons_layout"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Avatar ImageView -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_view_avatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                app:shapeAppearanceOverlay="@style/CircularImage" />
+
+            <!-- Full Name -->
+            <TextView
+                android:id="@+id/text_view_full_name_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Full Name"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="?attr/colorOutline" />
+
+            <TextView
+                android:id="@+id/text_view_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="8dp"
+                android:text="John Doe"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/md_theme_outlineVariant" />
+
+            <!-- Email -->
+            <TextView
+                android:id="@+id/text_view_email_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Email"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="?attr/colorOutline" />
+
+            <TextView
+                android:id="@+id/text_view_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="8dp"
+                android:text="johndoe@example.com"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/md_theme_outlineVariant" />
+
+            <!-- Phone -->
+            <TextView
+                android:id="@+id/text_view_phone_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Phone"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="?attr/colorOutline" />
+
+            <TextView
+                android:id="@+id/text_view_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="8dp"
+                android:text="(123) 456-7890"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/md_theme_outlineVariant" />
+
+            <!-- Address -->
+            <TextView
+                android:id="@+id/text_view_address_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Address"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="?attr/colorOutline" />
+
+            <TextView
+                android:id="@+id/text_view_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="8dp"
+                android:text="123 Main St, Springfield"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/md_theme_outlineVariant" />
+
+            <!-- Role -->
+            <TextView
+                android:id="@+id/text_view_role_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Role"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="?attr/colorOutline" />
+
+            <TextView
+                android:id="@+id/text_view_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="8dp"
+                android:text="Employee"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/md_theme_outlineVariant" />
+
+            <!-- Status -->
+            <TextView
+                android:id="@+id/text_view_status_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Status"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="?attr/colorOutline" />
+
+            <TextView
+                android:id="@+id/text_view_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="8dp"
+                android:text="Active"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/md_theme_outlineVariant" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Buttons at the bottom of the screen -->
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="25dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_edit"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="70dp"
+            android:layout_weight="40"
+            android:text="Edit"
+            app:backgroundTint="@color/md_theme_primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_remove"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:text="Remove"
+            app:backgroundTint="@color/md_theme_error" />
+    </LinearLayout>
+
+</RelativeLayout>

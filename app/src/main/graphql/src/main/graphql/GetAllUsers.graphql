@@ -1,0 +1,14 @@
+query Users {
+    users {
+        address,
+        avatar,
+        createdAt
+        email
+        fullName
+        id
+        phone
+        role
+        status
+        updatedAt
+    }
+}

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.stemy.mobileandroid.proto";
+option java_outer_classname = "AccountStaffProto";
+
+// The account staff service definition.
+service AccountStaff {
+  // Sends a request register new user staff
+  rpc Register (AccountRegisterRequest) returns (AccountRegisterResponse) {}
+}
+
+// The request message
+message AccountRegisterRequest {
+  optional string id = 1;
+  string email = 2;
+  StatusType status = 3;
+  RoleType role = 4;
+  string phone = 5;
+  string fullname = 6;
+  string address = 7;
+  string avatar = 8;
+
+
+  enum StatusType  {
+    ACTIVE = 0;
+    BAN = 1;
+  }
+
+  enum RoleType {
+    ADMIN = 0;
+    MANAGER = 1;
+    STAFF = 2;
+    CUSTOMER = 3;
+  }
+}
+
+// The response message
+message AccountRegisterResponse {
+  string message = 1;
+  bool success = 2;
+}
