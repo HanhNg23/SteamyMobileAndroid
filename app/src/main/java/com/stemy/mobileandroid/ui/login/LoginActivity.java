@@ -1,40 +1,27 @@
 package com.stemy.mobileandroid.ui.login;
 
 import android.app.Activity;
-
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.Editable;
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
+import com.stemy.mobileandroid.MainActivity;
 import com.stemy.mobileandroid.R;
-import com.stemy.mobileandroid.ui.login.LoginViewModel;
-import com.stemy.mobileandroid.ui.login.LoginViewModelFactory;
 import com.stemy.mobileandroid.databinding.ActivityLoginBinding;
-
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -46,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
     @Inject
-    public  LoginViewModelFactory loginViewModelFactory;
+    public LoginViewModelFactory loginViewModelFactory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -146,7 +133,17 @@ public class LoginActivity extends AppCompatActivity {
         binding.resultLogin.setText("Login successfully ! " + welcome);
         binding.resultLogin.setTextColor(Color.parseColor("#00873A"));
         binding.loading.setVisibility(View.INVISIBLE);
-        //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+        // Optionally, you can pass some extra data like the username or user details
+        intent.putExtra("username", model.getDisplayName());
+
+        // Start the MainActivity
+        startActivity(intent);
+
+        // Optionally, finish the current activity so the user can't go back to login
+        finish();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

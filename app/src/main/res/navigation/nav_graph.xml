@@ -3,31 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/EmployeeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.stemy.mobileandroid.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/HomeFragment"
+        android:name="com.stemy.mobileandroid.ui.employeeslist.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/home_fragment">
+    </fragment>
+    <fragment
+        android:id="@+id/EmployeeFragment"
+        android:name="com.stemy.mobileandroid.ui.employee.EmployeeFragment"
+        android:label="Employee"
+        tools:layout="@layout/fragment_employee">
+        <action
+            android:id="@+id/addNewEmployee"
+            app:destination="@id/NewUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NewUserFragment"
+        android:name="com.stemy.mobileandroid.ui.employee.addnewstaff.AddNewStaffFragment"
+        android:label="New staff"
+        tools:layout="@layout/fragment_add_new_staff">
+    </fragment>
 
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.stemy.mobileandroid.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/EmployeesListFragment"
+        android:name="com.stemy.mobileandroid.ui.employeeslist.EmployeesFragment"
+        android:label="Employees"
+        tools:layout="@layout/fragment_employees_list">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/fromListToDetailsEmployee"
+            app:destination="@id/EmployeeViewIndetails" />
     </fragment>
+
     <fragment
-        android:id="@+id/ItemListFragment"
-        android:name="com.stemy.mobileandroid.ItemFragment"
-        android:label="Item List Fragment"
-        tools:layout="@layout/fragment_item_list">
+        android:id="@+id/EmployeeViewIndetails"
+        android:name="com.stemy.mobileandroid.ui.employeeslist.EmployeeViewInDetailsFragment"
+        android:label="Employee View"
+        tools:layout="@layout/fragment_user_indetails">
+        <argument
+            android:name="accountUserToView"
+            app:argType="com.stemy.mobileandroid.data.model.AccountUser" />
     </fragment>
+
 </navigation>

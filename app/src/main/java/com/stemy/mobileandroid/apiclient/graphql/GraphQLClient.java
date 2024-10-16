@@ -1,16 +1,20 @@
-package com.stemy.mobileandroid.apiclient;
+package com.stemy.mobileandroid.apiclient.graphql;
+
+import static com.apollographql.apollo.api.Adapters.UploadAdapter;
 
 import android.util.Log;
 
 import com.apollographql.apollo.api.ApolloRequest;
+import com.apollographql.apollo.api.CustomScalarAdapters;
 import com.apollographql.apollo.api.Operation;
+import com.apollographql.apollo.api.ScalarType;
 import com.apollographql.java.client.ApolloCallback;
 import com.apollographql.java.client.ApolloClient;
 import com.apollographql.java.client.interceptor.ApolloInterceptor;
 import com.apollographql.java.client.interceptor.ApolloInterceptorChain;
-import com.apollographql.java.client.network.http.HttpEngine;
 import com.apollographql.java.client.network.http.HttpInterceptor;
 import com.stemy.mobileandroid.data.model.TokenManager;
+import com.stemy.mobileandroid.type.File;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -90,17 +94,23 @@ public class GraphQLClient {
         }
     };
 
+    CustomScalarAdapters customScalarAdapters = new CustomScalarAdapters.Builder()
+            .add(File.type, new FileUploadAdapter())
+            .build();
+
     public ApolloClient getClient() {
         if (apolloClient == null) {
             apolloClient = new ApolloClient.Builder()
                     .serverUrl(BASE_URL)
                     .addInterceptor(apolloInterceptor)
                     .addHttpInterceptor(httpInterceptor)
+                   .customScalarAdapters(customScalarAdapters)
                     //.httpEngine((HttpEngine) okHttpClient)  // Thêm OkHttpEngine với OkHttpClient vào ApolloClient
                     .build();
         }
         return apolloClient;
     }
+
 
     public boolean isInternetAvailable() {
         OkHttpClient client = new OkHttpClient();

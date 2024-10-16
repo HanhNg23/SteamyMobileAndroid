@@ -4,8 +4,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.stemy.mobileandroid.data.LoginDataSource;
-import com.stemy.mobileandroid.data.LoginRepository;
+import com.stemy.mobileandroid.data.Login.LoginRepository;
 
 import javax.inject.Inject;
 
@@ -19,7 +18,7 @@ import dagger.hilt.android.scopes.ActivityScoped;
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
 
 
-    LoginRepository loginRepository;
+    private LoginRepository loginRepository;
 
     @Inject
     public LoginViewModelFactory(LoginRepository loginRepository){

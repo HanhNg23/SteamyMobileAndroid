@@ -49,4 +49,5 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
 </resources>

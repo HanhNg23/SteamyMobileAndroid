@@ -6,16 +6,14 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import com.stemy.mobileandroid.data.LoginCallback;
-import com.stemy.mobileandroid.data.LoginRepository;
-import com.stemy.mobileandroid.data.Result;
-import com.stemy.mobileandroid.data.model.LoggedInUser;
+import com.stemy.mobileandroid.data.AccountCallback;
+import com.stemy.mobileandroid.data.Login.LoginRepository;
+import com.stemy.mobileandroid.data.model.AccountUser;
 import com.stemy.mobileandroid.R;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
-import io.reactivex.rxjava3.disposables.Disposable;
 
 @HiltViewModel
 public class LoginViewModel extends ViewModel {
@@ -52,9 +50,9 @@ public class LoginViewModel extends ViewModel {
 //    }
 
     public void login(String username, String password){
-        loginRepository.login(username, password, new LoginCallback() {
+        loginRepository.login(username, password, new AccountCallback() {
             @Override
-            public void onSuccess(LoggedInUser user) {
+            public void onSuccess(AccountUser user) {
                 loginResult.setValue(new LoginResult(new LoggedInUserView(user.getFullName())));
             }
 

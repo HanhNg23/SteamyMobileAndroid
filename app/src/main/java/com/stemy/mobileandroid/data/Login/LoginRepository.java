@@ -1,13 +1,11 @@
-package com.stemy.mobileandroid.data;
+package com.stemy.mobileandroid.data.Login;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
 
-import com.stemy.mobileandroid.data.model.LoggedInUser;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import com.stemy.mobileandroid.data.AccountCallback;
+import com.stemy.mobileandroid.data.model.AccountUser;
+import com.stemy.mobileandroid.data.model.Result;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -26,15 +24,13 @@ public class LoginRepository {
 
     // If user credentials will be cached in local storage, it is recommended it be encrypted
     // @see https://developer.android.com/training/articles/keystore
-    private LoggedInUser user = null;
+    private AccountUser user = null;
 
     // private constructor : singleton access
     @Inject
     public LoginRepository(LoginDataSource dataSource) {
         this.dataSource = dataSource;
     }
-
-
 
     public boolean isLoggedIn() {
         return user != null;
@@ -45,14 +41,14 @@ public class LoginRepository {
         dataSource.logout();
     }
 
-    private void setLoggedInUser(LoggedInUser user) {
+    private void setLoggedInUser(AccountUser user) {
         this.user = user;
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }
 
     @SuppressLint("CheckResult")
-    public void login(String username, String password, LoginCallback callback){
+    public void login(String username, String password, AccountCallback callback){
         Log.d("LoginRepository", "Starting login for user: " + username);
         dataSource.loginAsync(username, password)
                     .subscribeOn(Schedulers.io())
@@ -60,8 +56,8 @@ public class LoginRepository {
                     .subscribe(result -> {
                         Log.d("LoginRepository", "Login API call completed");
                         if(result instanceof Result.Success){
-                            LoggedInUser loggedInUser = ((Result.Success<LoggedInUser>) result).getData();
-                            setLoggedInUser(loggedInUser);
+                            AccountUser accountUser = ((Result.Success<AccountUser>) result).getData();
+                            setLoggedInUser(accountUser);
                             Log.d("LoginRepository", "Login successful, retrieving user data");
                             Log.d("USER DATA", user.getAccessToken());
                             dataSource.getCurrentLoggedInUser()
@@ -73,7 +69,7 @@ public class LoginRepository {
                                         Log.e("LoginRepository", "Error retrieving user data: " + error.getMessage());
                                         callback.onError(new Exception("Error logging in", error));
                                     });
-                        } else if (result instanceof  Result.Error) {
+                        } else if (result instanceof Result.Error) {
                             Log.e("LoginRepository", "Login failed: " + ((Result.Error) result).getError().getMessage());
                             callback.onError(((Result.Error) result).getError());
                         }

@@ -27,6 +27,18 @@ client = "0.0.2"
 rx3 = "0.0.2"
 rxjava = "3.1.9"
 rxandroid = "3.0.2"
+androidxNavigationSafeargsGradlePlugin = "2.8.2"
+navigationSafeArgsGradlePlugin = "2.8.2"
+grpcOkhttp = "1.68.0"
+grpcProtobufLite = "1.68.0"
+grpcStub = "1.68.0"
+annotationsApi = "6.0.53"
+gradle = "8.6.0"
+protobufGradlePlugin = "0.9.4"
+adsMobileSdk = "0.9.0-alpha01"
+glide = "5.0.0-rc01"
+compiler = "5.0.0-rc01"
+orgJetbrainsKotlinPluginParcelizeGradlePlugin = "2.1.0-Beta1"
 
 [libraries]
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
@@ -55,6 +67,18 @@ client = { group = "com.apollographql.java", name = "client", version.ref = "cli
 rx3 = { group = "com.apollographql.java", name = "rx3", version.ref = "rx3" }
 rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
 rxandroid = { group = "io.reactivex.rxjava3", name = "rxandroid", version.ref = "rxandroid" }
+androidx-navigation-safeargs-gradle-plugin = { group = "androidx.navigation.safeargs", name = "androidx.navigation.safeargs.gradle.plugin", version.ref = "androidxNavigationSafeargsGradlePlugin" }
+androidx-navigation-safe-args-gradle-plugin = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
+grpc-okhttp = { group = "io.grpc", name = "grpc-okhttp", version.ref = "grpcOkhttp" }
+grpc-protobuf-lite = { group = "io.grpc", name = "grpc-protobuf-lite", version.ref = "grpcProtobufLite" }
+grpc-stub = { group = "io.grpc", name = "grpc-stub", version.ref = "grpcStub" }
+annotations-api = { group = "org.apache.tomcat", name = "annotations-api", version.ref = "annotationsApi" }
+gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
+protobuf-gradle-plugin = { group = "com.google.protobuf", name = "protobuf-gradle-plugin", version.ref = "protobufGradlePlugin" }
+ads-mobile-sdk = { group = "com.google.android.libraries.ads.mobile.sdk", name = "ads-mobile-sdk", version.ref = "adsMobileSdk" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "compiler" }
+org-jetbrains-kotlin-plugin-parcelize-gradle-plugin = { group = "org.jetbrains.kotlin.plugin.parcelize", name = "org.jetbrains.kotlin.plugin.parcelize.gradle.plugin", version.ref = "orgJetbrainsKotlinPluginParcelizeGradlePlugin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
