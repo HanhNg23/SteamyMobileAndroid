@@ -118,17 +118,17 @@
                                         android:textStyle="bold" />
 
                                     <!-- Secondary Text -->
-                                    <TextView
-                                        android:id="@+id/numAdmin"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:fontFamily="@font/inter"
-                                        android:text="Number: 2"
-                                        android:textAppearance="?attr/textAppearanceBodyMedium"
-                                        android:textColor="@color/gray_title"
-                                        android:textSize="16sp"
-                                        android:visibility="invisible"/>
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/numAdmin"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_marginTop="8dp"-->
+<!--                                        android:fontFamily="@font/inter"-->
+<!--                                        android:text="Number: 2"-->
+<!--                                        android:textAppearance="?attr/textAppearanceBodyMedium"-->
+<!--                                        android:textColor="@color/gray_title"-->
+<!--                                        android:textSize="16sp"-->
+<!--                                        android:visibility="invisible"/>-->
 
                                 </LinearLayout>
 
@@ -243,17 +243,17 @@
                                         android:textStyle="bold" />
 
                                     <!-- Secondary Text -->
-                                    <TextView
-                                        android:id="@+id/numStaff"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:fontFamily="@font/inter"
-                                        android:text="Number: 2"
-                                        android:textAppearance="?attr/textAppearanceBodyMedium"
-                                        android:textColor="@color/gray_title"
-                                        android:textSize="16sp"
-                                        android:visibility="invisible"/>
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/numStaff"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_marginTop="8dp"-->
+<!--                                        android:fontFamily="@font/inter"-->
+<!--                                        android:text="Number: 2"-->
+<!--                                        android:textAppearance="?attr/textAppearanceBodyMedium"-->
+<!--                                        android:textColor="@color/gray_title"-->
+<!--                                        android:textSize="16sp"-->
+<!--                                        android:visibility="invisible"/>-->
 
                                 </LinearLayout>
 
@@ -404,17 +404,17 @@
                                         android:textStyle="bold" />
 
                                     <!-- Secondary Text -->
-                                    <TextView
-                                        android:id="@+id/numManager"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:fontFamily="@font/inter"
-                                        android:text="Number: 2"
-                                        android:textAppearance="?attr/textAppearanceBodyMedium"
-                                        android:textColor="@color/gray_title"
-                                        android:textSize="16sp"
-                                        android:visibility="invisible"/>
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/numManager"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_marginTop="8dp"-->
+<!--                                        android:fontFamily="@font/inter"-->
+<!--                                        android:text="Number: 2"-->
+<!--                                        android:textAppearance="?attr/textAppearanceBodyMedium"-->
+<!--                                        android:textColor="@color/gray_title"-->
+<!--                                        android:textSize="16sp"-->
+<!--                                        android:visibility="invisible"/>-->
 
                                 </LinearLayout>
 
