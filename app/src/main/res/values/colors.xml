@@ -1,7 +1,7 @@
 <resources>
-    <color name="md_theme_primary">#16A34A</color>
+    <color name="md_theme_primary">#118335</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
-    <color name="md_theme_primaryContainer">#16A34A</color>
+    <color name="md_theme_primaryContainer">#118335</color>
     <color name="md_theme_onPrimaryContainer">#FFFFFF</color>
     <color name="md_theme_secondary">#3B6842</color>
     <color name="md_theme_onSecondary">#FFFFFF</color>
@@ -25,8 +25,8 @@
     <color name="md_theme_outlineVariant">#BDCABA</color>
     <color name="md_theme_inverseSurface">#2B322B</color>
     <color name="md_theme_inverseOnSurface">#ECF3E7</color>
-    <color name="md_theme_inversePrimary">#62DF7D</color>
-    <color name="md_theme_primaryFixed">#7FFC97</color>
+    <color name="md_theme_inversePrimary">#118335</color>
+    <color name="md_theme_primaryFixed">#118335</color>
     <color name="md_theme_onPrimaryFixed">#002109</color>
     <color name="md_theme_primaryFixedDim">#62DF7D</color>
     <color name="md_theme_onPrimaryFixedVariant">#005320</color>
@@ -48,4 +48,8 @@
     <color name="md_theme_background_mediumContrast">#F4FCF0</color>
     <color name="md_theme_onBackground_highContrast">#171D16</color>
     <color name="gray_title">#71717A</color>
+    <color name="adminColor">#3F51B5</color>
+    <color name="staffColor">#FF9800</color>
+    <color name="managerColor">#009688</color>
+    <color name="customerColor">#673AB7</color>
 </resources>

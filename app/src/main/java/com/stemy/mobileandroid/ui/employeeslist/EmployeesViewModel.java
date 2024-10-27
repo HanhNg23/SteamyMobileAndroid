@@ -4,12 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.common.base.Strings;
-import com.stemy.mobileandroid.R;
 import com.stemy.mobileandroid.data.ListCallbackGeneric;
 import com.stemy.mobileandroid.data.SystemUser.GetAllUserRepository;
 import com.stemy.mobileandroid.data.model.AccountUser;
-import com.stemy.mobileandroid.ui.employee.addnewstaff.AddNewStaffResult;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,13 +14,17 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import lombok.Getter;
+import lombok.Setter;
 
 @HiltViewModel
 public class EmployeesViewModel extends ViewModel {
 
     private GetAllUserRepository getAllUserRepository;
     private MutableLiveData<GetAllEmployeesResult> getAllEmployeesResult = new MutableLiveData<GetAllEmployeesResult>();
-
+    @Setter
+    @Getter
+    private String currentRoleView;
 
     @Inject
     public EmployeesViewModel(GetAllUserRepository getAllUserRepository) {
@@ -35,7 +36,7 @@ public class EmployeesViewModel extends ViewModel {
     }
 
     public void getAllEmployeesUser(){
-        this.getAllUserRepository.GetAllUsers(new ListCallbackGeneric<AccountUser>() {
+        this.getAllUserRepository.getAllUsers(new ListCallbackGeneric<AccountUser>() {
             @Override
             public void onSuccess(List<AccountUser> list) {
                 getAllEmployeesResult.setValue(new GetAllEmployeesResult(new GetAllEmpployeesSuccessInUserView(list)));
@@ -43,10 +44,12 @@ public class EmployeesViewModel extends ViewModel {
 
             @Override
             public void onError(Exception e) {
-                getAllEmployeesResult.setValue(new GetAllEmployeesResult(Integer.valueOf("Get all system users failed !")));
+                getAllEmployeesResult.setValue(new GetAllEmployeesResult(Integer.valueOf("Get all system users failed ! " + e.getMessage())));
             }
         });
     }
+
+
 
 
 }

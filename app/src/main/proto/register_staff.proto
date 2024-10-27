@@ -5,14 +5,18 @@ option java_package = "com.stemy.mobileandroid.proto";
 option java_outer_classname = "AccountStaffProto";
 
 // The account staff service definition.
-service AccountStaff {
+service AccountStaff  {
   // Sends a request register new user staff
   rpc Register (AccountRegisterRequest) returns (AccountRegisterResponse) {}
+
+  rpc UpdateStaff (AccountToUpdateRequest) returns (AccountToUpdateResponse) {}
+
+  rpc RemoveStaff (AccountToDeleteRequest) returns (AccountToDeleteResponse) {}
 }
 
 // The request message
 message AccountRegisterRequest {
-  optional string id = 1;
+  optional int32 id = 1;
   string email = 2;
   StatusType status = 3;
   RoleType role = 4;
@@ -21,6 +25,37 @@ message AccountRegisterRequest {
   string address = 7;
   string avatar = 8;
 
+  enum StatusType  {
+    ACTIVE = 0;
+    BAN = 1;
+  }
+
+  enum RoleType {
+    ADMIN = 0;
+    MANAGER = 1;
+    STAFF = 2;
+    CUSTOMER = 3;
+  }
+
+
+}
+
+// The response message
+message AccountRegisterResponse {
+  string message = 1;
+  bool success = 2;
+}
+
+// The request message
+message AccountToUpdateRequest {
+  int32 id = 1;
+  string email = 2;
+  StatusType status = 3;
+  RoleType role = 4;
+  string phone = 5;
+  string fullname = 6;
+  string address = 7;
+  string avatar = 8;
 
   enum StatusType  {
     ACTIVE = 0;
@@ -35,8 +70,20 @@ message AccountRegisterRequest {
   }
 }
 
-// The response message
-message AccountRegisterResponse {
+message AccountToUpdateResponse {
   string message = 1;
   bool success = 2;
 }
+
+message AccountToDeleteRequest {
+  int32 id = 1;
+}
+
+message AccountToDeleteResponse {
+  string message = 1;
+  bool success = 2;
+}
+
+
+
+

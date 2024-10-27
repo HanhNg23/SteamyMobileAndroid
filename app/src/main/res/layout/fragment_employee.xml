@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.employee.EmployeeFragment">
 
@@ -14,13 +14,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_margin="20dp"
+        android:backgroundTint="@color/md_theme_primary"
         android:text="Add new"
+        android:textColor="@color/md_theme_onPrimary"
+        android:textColorLink="@color/md_theme_onTertiaryContainer"
         android:textSize="14sp"
         app:icon="@drawable/ic_person_add"
-        app:strokeWidth = "0dp"
-        app:shapeAppearance = "?attr/shapeAppearanceSmallComponent"
-        app:rippleColor = "?attr/colorOnPrimary"
-        />
+        app:iconTint="@color/md_theme_onPrimary"
+        app:rippleColor="?attr/colorOnPrimary"
+        app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+        app:strokeWidth="0dp" />
 
     <!-- Cards for Department Counts -->
     <LinearLayout
@@ -31,35 +34,38 @@
         android:weightSum="3">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:id="@+id/admincard"
             style="?attr/materialCardViewElevatedStyle"
-            app:strokeWidth	= "1dp"
-            app:cardElevation = "1dp"
-            app:cardForegroundColor = "@android:color/transparent"
-            app:cardBackgroundColor = "?attr/colorSurface">
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:soundEffectsEnabled="true"
+            app:cardElevation="1dp"
+            app:cardForegroundColor="@android:color/transparent"
+            app:strokeColor="@color/md_theme_secondaryContainer"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:background="@color/md_theme_onPrimary"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:soundEffectsEnabled="true">
 
                 <!-- Media -->
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="194dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/user" />
-
+                <!--                <ImageView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="194dp"-->
+                <!--                    android:scaleType="centerCrop"-->
+                <!--                    app:srcCompat="@drawable/user" />-->
 
 
                 <!-- Buttons -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_margin="10dp"
                     android:baselineAligned="false"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -67,33 +73,87 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="100"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="0dp">
 
-                        <!-- Title, secondary and supporting text -->
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Admin"
-                            android:textAppearance="?attr/textAppearanceTitleMedium" />
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="0dp"> <!-- Optional: Customize background -->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Numbers: 2"
-                            android:textAppearance="?attr/textAppearanceBodyMedium"
-                            android:textColor="?android:attr/textColorSecondary" />
+                            <!-- Adjust any other styling as needed -->
+                            <!-- Avatar Image -->
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/admincardicon"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="16dp"
+                                android:contentDescription="Avatar"
+                                android:src="@drawable/profile_3135715" />
+
+                            <!-- Content Area -->
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <!-- Title -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/inter"
+                                        android:text="Admin"
+                                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                                        android:textColor="@color/md_theme_primaryContainer"
+                                        android:textSize="24sp"
+                                        android:textStyle="bold" />
+
+                                    <!-- Secondary Text -->
+                                    <TextView
+                                        android:id="@+id/numAdmin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/inter"
+                                        android:text="Number: 2"
+                                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                                        android:textColor="@color/gray_title"
+                                        android:textSize="16sp"
+                                        android:visibility="invisible"/>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
                     </LinearLayout>
 
+
                     <Button
-                        android:id="@+id/btnViewEmployeeList"
+                        android:id="@+id/btnViewAdminEmployeeList"
                         style="@style/Widget.Material3.Button.TextButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/inter"
                         android:gravity="center"
+                        android:paddingTop="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="0dp"
                         android:text="View list"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:icon="@drawable/ic_list"
+                        app:iconGravity="start"
                         app:rippleColor="?attr/colorOnPrimary"
                         app:shapeAppearance="?attr/actionBarTabStyle"
                         app:strokeWidth="0dp" />
@@ -103,7 +163,306 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/staffcard"
+            style="?attr/materialCardViewElevatedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:soundEffectsEnabled="true"
+            app:cardElevation="1dp"
+            app:cardForegroundColor="@android:color/transparent"
+            app:strokeColor="@color/md_theme_secondaryContainer"
+            app:strokeWidth="1dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/md_theme_onPrimary"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:soundEffectsEnabled="true">
+
+
+
+                <!-- Buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:baselineAligned="false"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="100"
+                        android:orientation="vertical"
+                        android:padding="0dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="0dp"> <!-- Optional: Customize background -->
+
+                            <!-- Adjust any other styling as needed -->
+                            <!-- Avatar Image -->
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/staffcardicon"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="16dp"
+                                android:contentDescription="Avatar"
+                                android:src="@drawable/team_306210" />
+
+                            <!-- Content Area -->
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <!-- Title -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/inter"
+                                        android:text="Staff"
+                                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                                        android:textColor="@color/md_theme_primaryContainer"
+                                        android:textSize="24sp"
+                                        android:textStyle="bold" />
+
+                                    <!-- Secondary Text -->
+                                    <TextView
+                                        android:id="@+id/numStaff"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/inter"
+                                        android:text="Number: 2"
+                                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                                        android:textColor="@color/gray_title"
+                                        android:textSize="16sp"
+                                        android:visibility="invisible"/>
+
+                                </LinearLayout>
+
+                                <!-- Detail Button -->
+                                <!--                            <Button-->
+                                <!--                                android:id="@+id/btnDetail"-->
+                                <!--                                android:layout_width="wrap_content"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_alignParentEnd="true"-->
+                                <!--                                android:layout_alignParentBottom="true"-->
+                                <!--                                android:backgroundTint="@color/md_theme_primary"-->
+                                <!--                                android:elevation="4dp"-->
+                                <!--                                android:paddingHorizontal="12dp"-->
+                                <!--                                android:paddingVertical="6dp"-->
+                                <!--                                android:text="View Details"-->
+                                <!--                                android:textSize="14sp" />-->
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <Button
+                        android:id="@+id/btnViewStaffEmployeeList"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/inter"
+                        android:gravity="center"
+                        android:paddingTop="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="0dp"
+                        android:text="View list"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:icon="@drawable/ic_list"
+                        app:iconGravity="start"
+                        app:rippleColor="?attr/colorOnPrimary"
+                        app:shapeAppearance="?attr/actionBarTabStyle"
+                        app:strokeWidth="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/managercard"
+            style="?attr/materialCardViewElevatedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:soundEffectsEnabled="true"
+            app:cardElevation="1dp"
+            app:cardForegroundColor="@android:color/transparent"
+            app:strokeColor="@color/md_theme_secondaryContainer"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/md_theme_onPrimary"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:soundEffectsEnabled="true">
+
+                <!-- Media -->
+                <!--                <ImageView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="194dp"-->
+                <!--                    android:scaleType="centerCrop"-->
+                <!--                    app:srcCompat="@drawable/user" />-->
+
+
+                <!-- Buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:baselineAligned="false"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="100"
+                        android:orientation="vertical"
+                        android:padding="0dp">
+
+                        <!--                        &lt;!&ndash; Title, secondary and supporting text &ndash;&gt;-->
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:text="Admin"-->
+                        <!--                            android:textAppearance="?attr/textAppearanceTitleMedium"-->
+                        <!--                            android:textColor="@color/md_theme_primaryContainer"-->
+                        <!--                            android:textSize="24sp" />-->
+
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginTop="8dp"-->
+                        <!--                            android:text="Numbers: 2"-->
+                        <!--                            android:textAppearance="?attr/textAppearanceBodyMedium"-->
+                        <!--                            android:textColor="@color/gray_title"-->
+                        <!--                            android:textSize="16sp" />-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="0dp"> <!-- Optional: Customize background -->
+
+                            <!-- Adjust any other styling as needed -->
+                            <!-- Avatar Image -->
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/managercardicon"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="16dp"
+                                android:contentDescription="Avatar"
+                                android:src="@drawable/manager_14354015" />
+
+                            <!-- Content Area -->
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <!-- Title -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/inter"
+                                        android:text="Manager"
+                                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                                        android:textColor="@color/md_theme_primaryContainer"
+                                        android:textSize="24sp"
+                                        android:textStyle="bold" />
+
+                                    <!-- Secondary Text -->
+                                    <TextView
+                                        android:id="@+id/numManager"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/inter"
+                                        android:text="Number: 2"
+                                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                                        android:textColor="@color/gray_title"
+                                        android:textSize="16sp"
+                                        android:visibility="invisible"/>
+
+                                </LinearLayout>
+
+                                <!-- Detail Button -->
+                                <!--                            <Button-->
+                                <!--                                android:id="@+id/btnDetail"-->
+                                <!--                                android:layout_width="wrap_content"-->
+                                <!--                                android:layout_height="wrap_content"-->
+                                <!--                                android:layout_alignParentEnd="true"-->
+                                <!--                                android:layout_alignParentBottom="true"-->
+                                <!--                                android:backgroundTint="@color/md_theme_primary"-->
+                                <!--                                android:elevation="4dp"-->
+                                <!--                                android:paddingHorizontal="12dp"-->
+                                <!--                                android:paddingVertical="6dp"-->
+                                <!--                                android:text="View Details"-->
+                                <!--                                android:textSize="14sp" />-->
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <Button
+                        android:id="@+id/btnViewManagerEmployeeList"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:layout_gravity="bottom"
+                        android:fontFamily="@font/inter"
+                        android:gravity="center"
+                        android:paddingTop="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="0dp"
+                        android:text="View list"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:icon="@drawable/ic_list"
+                        app:iconGravity="start"
+                        app:rippleColor="?attr/colorOnPrimary"
+                        app:shapeAppearance="?attr/actionBarTabStyle"
+                        app:strokeWidth="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

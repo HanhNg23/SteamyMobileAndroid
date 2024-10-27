@@ -20,6 +20,12 @@
             android:padding="20dp">
 
             <!-- Avatar ImageView -->
+            <TextView
+                android:id="@+id/userId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_view_avatar"
                 android:layout_width="120dp"

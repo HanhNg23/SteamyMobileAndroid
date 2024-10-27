@@ -135,9 +135,9 @@ public class LoginActivity extends AppCompatActivity {
         binding.loading.setVisibility(View.INVISIBLE);
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-
         // Optionally, you can pass some extra data like the username or user details
         intent.putExtra("username", model.getDisplayName());
+
 
         // Start the MainActivity
         startActivity(intent);

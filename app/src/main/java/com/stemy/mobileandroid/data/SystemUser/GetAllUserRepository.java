@@ -28,7 +28,7 @@ public class GetAllUserRepository {
     }
 
     @SuppressLint("CheckResult")
-    public void GetAllUsers(ListCallbackGeneric<AccountUser> accountUsersCallBack){
+    public void getAllUsers(ListCallbackGeneric<AccountUser> accountUsersCallBack){
         Log.d("GetAllUserRepository", "Starting getting all user: ");
         getAllUserDatasource.getAllSystemUsers()
                 .subscribeOn(Schedulers.io())

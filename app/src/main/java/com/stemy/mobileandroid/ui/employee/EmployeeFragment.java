@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -18,13 +19,23 @@ import android.view.ViewGroup;
 import com.stemy.mobileandroid.R;
 import com.stemy.mobileandroid.databinding.FragmentAddNewStaffBinding;
 import com.stemy.mobileandroid.databinding.FragmentEmployeeBinding;
+import com.stemy.mobileandroid.ui.employeeslist.EmployeesViewModel;
+import com.stemy.mobileandroid.ui.employeeslist.EmployeesViewModelFactory;
 
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class EmployeeFragment extends Fragment {
 
     private EmployeeViewModel mViewModel;
     private FragmentEmployeeBinding binding;
+    private EmployeesViewModel employeesViewModel;
+    @Inject
+    EmployeesViewModelFactory employeesViewModelFactory;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -36,8 +47,12 @@ public class EmployeeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        employeesViewModel = new ViewModelProvider(this, employeesViewModelFactory).get(EmployeesViewModel.class);
         binding.btnAddNewEmployee.setOnClickListener(this::AddNewOnclickListender);
-        binding.btnViewEmployeeList.setOnClickListener(this::ViewEmployeeListOnclickListender);
+        binding.btnViewAdminEmployeeList.setOnClickListener(v ->ViewEmployeeListOnclickListender(v, "admin"));
+        binding.btnViewStaffEmployeeList.setOnClickListener(v -> ViewEmployeeListOnclickListender(v, "staff"));
+        binding.btnViewManagerEmployeeList.setOnClickListener(v -> ViewEmployeeListOnclickListender(v, "manager"));
     }
 
     @Override
@@ -53,9 +68,11 @@ public class EmployeeFragment extends Fragment {
 
     }
 
-    public void ViewEmployeeListOnclickListender(View view){
+    public void ViewEmployeeListOnclickListender(View view, String role){
         NavController navController = NavHostFragment.findNavController(EmployeeFragment.this);
-        navController.navigate(R.id.EmployeesListFragment);
+       // navController.navigate(R.id.EmployeesListFragment);
+        EmployeeFragmentDirections.FromHomeToEmployeeList action = EmployeeFragmentDirections.fromHomeToEmployeeList(role);
+        navController.navigate(action);
     }
 
 

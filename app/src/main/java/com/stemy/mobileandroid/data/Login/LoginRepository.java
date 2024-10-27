@@ -6,6 +6,7 @@ import android.util.Log;
 import com.stemy.mobileandroid.data.AccountCallback;
 import com.stemy.mobileandroid.data.model.AccountUser;
 import com.stemy.mobileandroid.data.model.Result;
+import com.stemy.mobileandroid.type.Role;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -64,11 +65,16 @@ public class LoginRepository {
                                     .subscribe(user -> {
                                         Log.d("LoginRepository", "User data retrieved successfully");
                                         Log.d("USER DATA", user.toString());
+                                        if(!user.getRole().rawValue.equalsIgnoreCase(Role.ADMIN.rawValue)){
+
+                                            callback.onError(new Exception("Admin access only"));
+                                        }
                                         callback.onSuccess(user);
                                     }, error -> {
                                         Log.e("LoginRepository", "Error retrieving user data: " + error.getMessage());
                                         callback.onError(new Exception("Error logging in", error));
                                     });
+
                         } else if (result instanceof Result.Error) {
                             Log.e("LoginRepository", "Login failed: " + ((Result.Error) result).getError().getMessage());
                             callback.onError(((Result.Error) result).getError());

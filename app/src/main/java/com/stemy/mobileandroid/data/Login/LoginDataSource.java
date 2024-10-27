@@ -79,7 +79,7 @@ public class LoginDataSource {
                 AccountUser user = new AccountUser();
                 user.setAuthenticated(true);
                 user.setAccessToken(accessToken);
-                user.setUserId(response.data.me.id);
+                user.setUserId(Integer.parseInt(response.data.me.id));
                 user.setRole(response.data.me.role);
                 user.setUserMail(response.data.me.email);
                 user.setPhone(response.data.me.phone);
@@ -107,7 +107,7 @@ public class LoginDataSource {
                         AccountUser user = new AccountUser();
                         user.setAuthenticated(true);
                         user.setAccessToken(accessToken);
-                        user.setUserId(response.data.me.id);
+                        user.setUserId(Integer.parseInt(response.data.me.id));
                         user.setRole(response.data.me.role);
                         user.setUserMail(response.data.me.email);
                         user.setPhone(response.data.me.phone);

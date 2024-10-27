@@ -7,6 +7,7 @@ import com.stemy.mobileandroid.data.model.AccountUser;
 import com.stemy.mobileandroid.type.Role;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class GetAllEmpployeesSuccessInUserView {
@@ -19,9 +20,16 @@ public class GetAllEmpployeesSuccessInUserView {
 
     public List<AccountUser> getEmployeeUsers() {
         return this.employeeUsers.parallelStream()
-                .filter(user -> !user.getRole().rawValue.equals(Role.CUSTOMER.rawValue))
+                .filter(user -> !user.getRole().rawValue.equals(Role.CUSTOMER.rawValue) && !user.getUserMail().equalsIgnoreCase("removed"))
                 .collect(Collectors.toList());
     }
+
+
+    public AccountUser getEmployeeUsersById(int userId) {
+        return this.employeeUsers.parallelStream()
+                .filter(user -> !user.getRole().rawValue.equals(Role.CUSTOMER.rawValue) && user.getUserId() == userId)
+                .findAny()
+                .orElseThrow(() -> new NoSuchElementException("User not found"));    }
 
     public List<AccountUser> getFilteredEmployees(String query) {
         String lowercaseQuery = query.toLowerCase();
@@ -29,7 +37,7 @@ public class GetAllEmpployeesSuccessInUserView {
 
         List<AccountUser> filteredList = this.employeeUsers.parallelStream()
                 .filter(user ->
-                        !user.getRole().rawValue.equals(Role.CUSTOMER.rawValue) && (
+                        !user.getRole().rawValue.equals(Role.CUSTOMER.rawValue) && !user.getUserMail().equalsIgnoreCase("removed") && (
                         user.getFullName().toLowerCase().contains(lowercaseQuery)
                                 || user.getUserMail().toLowerCase().contains(lowercaseQuery) ||
                                 user.getRole().rawValue.equalsIgnoreCase(lowercaseQuery) ||

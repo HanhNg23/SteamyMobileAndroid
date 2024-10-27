@@ -26,6 +26,7 @@ import com.stemy.mobileandroid.data.model.AccountUser;
 import com.stemy.mobileandroid.databinding.FragmentEmployeesListBinding;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -42,6 +43,7 @@ public class EmployeesFragment extends Fragment {
     private String query = "";
     private GetAllEmpployeesSuccessInUserView globalAccountUsersAllInUserView;
     private NavController navController ;
+    private String currenViewRole;
     @Inject
     EmployeesViewModelFactory employeesViewModelFactory;
 
@@ -62,6 +64,9 @@ public class EmployeesFragment extends Fragment {
 
         // Initialize ViewModel
         employeesViewModel = new ViewModelProvider(this, employeesViewModelFactory).get(EmployeesViewModel.class);
+
+        currenViewRole = EmployeesFragmentArgs.fromBundle(getArguments()).getRoleView();
+        employeesViewModel.setCurrentRoleView(currenViewRole);
 
         setupRecyclerView();
         observeViewModelForShowallEmployees();
@@ -99,7 +104,7 @@ public class EmployeesFragment extends Fragment {
         }
     }
 
-    private void observeViewModelForShowallEmployees() {
+    protected void observeViewModelForShowallEmployees() {
         employeesViewModel.getAllEmployeesResult().observe(getViewLifecycleOwner(), new Observer<GetAllEmployeesResult>() {
             @Override
             public void onChanged(GetAllEmployeesResult getAllEmployeesResult) {
@@ -123,19 +128,20 @@ public class EmployeesFragment extends Fragment {
     private void updateUiWithAllEmployees(GetAllEmpployeesSuccessInUserView model) {
         Toast.makeText(getActivity(), "GET ALL EMPLOYEE USER SUCCESS", Toast.LENGTH_LONG).show();
         globalAccountUsersAllInUserView = model;
-        List<AccountUser> accountUsers = globalAccountUsersAllInUserView.getEmployeeUsers();
+        List<AccountUser> accountUsers = globalAccountUsersAllInUserView.getEmployeeUsers().parallelStream().filter(u -> u.getRole().rawValue.equalsIgnoreCase(employeesViewModel.getCurrentRoleView())).collect(Collectors.toList());
 
-
-        binding.employeesListRecycleView.setAdapter(new EmployeesRecyclerViewAdapter(accountUsers, navController));
-
+        // Update adapter data
+        EmployeesRecyclerViewAdapter adapter = (EmployeesRecyclerViewAdapter) binding.employeesListRecycleView.getAdapter();
+        if (adapter != null) {
+            adapter.updateData(accountUsers);
+        } else {
+            binding.employeesListRecycleView.setAdapter(new EmployeesRecyclerViewAdapter(accountUsers, navController));
+        }
     }
 
     private void showGetAllUserFailed(@StringRes Integer errorString) {
         Toast.makeText(getActivity(), "GET ALL EMPLOYEE USER FAILED", Toast.LENGTH_LONG).show();
     }
 
-    private void navigateToViewDetailsWhenOnclick(){
-
-    }
 
 }

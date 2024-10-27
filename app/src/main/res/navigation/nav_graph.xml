@@ -19,12 +19,30 @@
         <action
             android:id="@+id/addNewEmployee"
             app:destination="@id/NewUserFragment" />
+        <action
+            android:id="@+id/fromHomeToEmployeeList"
+            app:destination="@id/EmployeesListFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/NewUserFragment"
         android:name="com.stemy.mobileandroid.ui.employee.addnewstaff.AddNewStaffFragment"
         android:label="New staff"
         tools:layout="@layout/fragment_add_new_staff">
+    </fragment>
+
+    <fragment
+        android:id="@+id/UpdateUserFragment"
+        android:name="com.stemy.mobileandroid.ui.employee.updatestaff.UpdateStaffFragment"
+        android:label="Update staff"
+        tools:layout="@layout/fragment_update_staff">
+        <argument
+            android:name="accountUserToUpdate"
+            app:argType="com.stemy.mobileandroid.data.model.AccountUser" />
+<!--        <action-->
+<!--            android:id="@+id/fromUpdateUserBackToViewDetail"-->
+<!--            app:destination="@id/EmployeeViewIndetails"-->
+<!--            app:popUpTo="@id/UpdateUserFragment" />-->
     </fragment>
 
     <fragment
@@ -35,6 +53,9 @@
         <action
             android:id="@+id/fromListToDetailsEmployee"
             app:destination="@id/EmployeeViewIndetails" />
+        <argument
+            android:name="roleView"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -45,6 +66,9 @@
         <argument
             android:name="accountUserToView"
             app:argType="com.stemy.mobileandroid.data.model.AccountUser" />
+        <action
+            android:id="@+id/fromViewDetailUserToUpdate"
+            app:destination="@id/UpdateUserFragment" />
     </fragment>
 
 </navigation>

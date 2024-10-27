@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountUser implements Parcelable {
-    private String userId;
+    private int userId;
     private String userMail;
     private String fullName;
     private Role role;
@@ -37,7 +37,7 @@ public class AccountUser implements Parcelable {
 
     // Parcelable implementation
     protected AccountUser(Parcel in) {
-        userId = in.readString();
+        userId = in.readInt();
         userMail = in.readString();
         fullName = in.readString();
         role = Role.safeValueOf(in.readString());
@@ -70,7 +70,7 @@ public class AccountUser implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(userId);
+        dest.writeInt(userId);
         dest.writeString(userMail);
         dest.writeString(fullName);
         dest.writeString(role.rawValue);

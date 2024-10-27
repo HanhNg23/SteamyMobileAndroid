@@ -45,7 +45,7 @@ public class GetAllUserDatasource {
                                 emitter.onSuccess(new Result.Success<>(List.of()));
                             }
                             accountUsers = response.data.users.parallelStream().map(user -> AccountUser.builder()
-                                    .userId(user.id)
+                                    .userId(Integer.parseInt(user.id))
                                     .userMail(user.email)
                                     .fullName(user.fullName)
                                     .role(Role.safeValueOf(user.role.rawValue))  // Assuming Role is an enum or a class

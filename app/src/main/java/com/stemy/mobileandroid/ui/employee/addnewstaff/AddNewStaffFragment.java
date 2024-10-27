@@ -73,9 +73,6 @@ public class AddNewStaffFragment extends Fragment {
         final TextInputEditText userPhone = (TextInputEditText) binding.editTextPhone;
         final TextInputEditText password = (TextInputEditText) binding.editTextPassword;
 
-        final TextInputEditText userRole = (TextInputEditText) binding.editTextMail;
-        final TextInputEditText userStatus = (TextInputEditText) binding.editTextMail;
-
         final Button buttonSaveRegister = binding.buttonSaveRegister;
         final Button buttonCancel = binding.buttonCancel;
         final ProgressBar loadingProgressBar = binding.loadingRegister;
@@ -84,11 +81,7 @@ public class AddNewStaffFragment extends Fragment {
         final RadioGroup roleRadioGroup = binding.roleGroup;
 
         int selectedRoleId = roleRadioGroup.getCheckedRadioButtonId();
-
         int selectedStatusId = statusRadioGroup.getCheckedRadioButtonId();
-
-//        RadioButton selectedRadioRole = getActivity().findViewById(selectedRoleId);
-//        RadioButton selectedRadioStatus = getActivity().findViewById(selectedStatusId);
 
 
         addNewStaffViewModel.getAddNewStaffFormState().observe(getViewLifecycleOwner(), new Observer<AddNewStaffFormState>() {
@@ -168,6 +161,14 @@ public class AddNewStaffFragment extends Fragment {
                                 .status(accountStatus)
                                 .avatarFile(avatarFile)
                                 .build());
+            }
+        });
+
+        binding.buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Use the fragment's requireActivity() method
+                requireActivity().getSupportFragmentManager().popBackStack();
             }
         });
 
