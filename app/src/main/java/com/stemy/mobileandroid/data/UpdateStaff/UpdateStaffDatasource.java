@@ -27,9 +27,8 @@ public class UpdateStaffDatasource {
     public Single<Result<AccountUser>> updateUserStaff(AccountUser accountUser){
         return Single.create(emitter -> {
             Log.d(theClassName, "Update the staff");
+            AccountUpdateStaffGrpcClient accountUpdateStaffGrpcClient = new AccountUpdateStaffGrpcClient();
             try{
-                AccountUpdateStaffGrpcClient accountUpdateStaffGrpcClient = new AccountUpdateStaffGrpcClient();
-
                 AccountToUpdateResponse response = accountUpdateStaffGrpcClient.updateStaff(accountUser);
 
                 if(response.getSuccess()){
@@ -38,11 +37,14 @@ public class UpdateStaffDatasource {
                 }else{
                     Log.e(theClassName, "Update failed: " + response.getMessage());
                 }
+
             }catch (Exception e){
                 // Handle any exceptions that occurred during the gRPC call
                 Log.e(theClassName, "Exception occurred while updating staff: ", e);
                 // Emit the error
                 emitter.onError(new IOException("Error updating staff", e));
+            }finally {
+                accountUpdateStaffGrpcClient.shutdown();
             }
 
         });

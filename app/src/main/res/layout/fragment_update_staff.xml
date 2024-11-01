@@ -96,7 +96,8 @@ tools:context=".ui.employee.updatestaff.UpdateStaffFragment">
             android:id="@+id/avatarUrl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="" />
+            android:text=""
+            android:visibility="invisible" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputName"

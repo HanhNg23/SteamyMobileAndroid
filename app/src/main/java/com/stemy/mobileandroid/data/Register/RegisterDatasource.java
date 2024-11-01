@@ -69,10 +69,12 @@ public class RegisterDatasource {
         //Single.create() - creates a Single that emits a single item (either success or error) and allows the operation to be performed asynchronously
         return Single.create(emitter -> {
             Log.d("RegisterDatasource", "Updating staff role and status");
+            // Initialize your gRPC client
+            AccountRegisterGrpcClient accountRegisterGrpcClient = new AccountRegisterGrpcClient();
 
             try {
-                // Initialize your gRPC client
-                AccountRegisterGrpcClient accountRegisterGrpcClient = new AccountRegisterGrpcClient();
+
+
 
                 // Attempt to call the gRPC client to register the user
                 AccountRegisterResponse response = accountRegisterGrpcClient.registerUser(accountUser);
@@ -87,12 +89,14 @@ public class RegisterDatasource {
                     // Emit an error if the registration failed
                     emitter.onSuccess(new Result.Error(new IOException("Update staff role status failed: " + response.getMessage())));
                 }
-
+                accountRegisterGrpcClient.shutdown();
             } catch (Exception e) {
                 // Handle any exceptions that occurred during the gRPC call
                 Log.e("RegisterDatasource", "Exception occurred while updating staff role status: ", e);
                 // Emit the error
                 emitter.onError(new IOException("Error updating staff role status", e));
+            }finally {
+                accountRegisterGrpcClient.shutdown();
             }
         });
     }

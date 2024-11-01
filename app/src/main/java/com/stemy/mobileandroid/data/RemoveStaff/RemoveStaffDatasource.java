@@ -26,8 +26,9 @@ public class RemoveStaffDatasource {
     public Single<Result<Boolean>> removeSaff(int userId){
         return Single.create(emitter -> {
             Log.d(theClassName, "Remove the staff");
+            AccountRemoveStaffGrpcClient accountRemoveStaffGrpcClient = new AccountRemoveStaffGrpcClient();
+
             try{
-                AccountRemoveStaffGrpcClient accountRemoveStaffGrpcClient = new AccountRemoveStaffGrpcClient();
 
                 AccountToDeleteResponse response = accountRemoveStaffGrpcClient.removeById(userId);
 
@@ -37,11 +38,14 @@ public class RemoveStaffDatasource {
                 }else{
                     Log.e(theClassName, "Delete staff failed: " + response.getMessage());
                 }
+
             }catch (Exception e){
                 // Handle any exceptions that occurred during the gRPC call
                 Log.e(theClassName, "Exception occurred while deleting staff: ", e);
                 // Emit the error
                 emitter.onError(new IOException("Error deleting staff", e));
+            }finally {
+                accountRemoveStaffGrpcClient.shutdown();
             }
 
         });
